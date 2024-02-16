@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using UMFG.ProgramacaoIV.Dominio.Extensoes;
 
 namespace UMFG.ProgramacaoIV.Dominio.Entidades
 {
@@ -20,6 +21,9 @@ namespace UMFG.ProgramacaoIV.Dominio.Entidades
 
             CPF = string.IsNullOrWhiteSpace(cpf)
                 ? throw new ArgumentNullException(nameof(cpf)) : cpf;
+
+            if (!cpf.IsCpf())
+                throw new ArgumentException("CPF inválido!");
         }
 
         public override string ToString()
